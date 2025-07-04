@@ -22,7 +22,7 @@ This repository contains the code for our paper:
 Protein coding gene annotations in `GFF3` format are obtained from Ensembl and EnsemblGenomes FTP server following the official group categorization. Archaea and Bacteria are not included in this study for not exhibiting alternative splicing the way eukaryotes do in general. 
 |Divisions|Release|
 |--------|-------|
-|[EnsemblVertebrates](https://ftp.ensembl.org/pub/current/))|114|
+|[EnsemblVertebrates](https://ftp.ensembl.org/pub/current/)|114|
 |[EnsemblMetazoa](http://ftp.ensemblgenomes.org/pub/metazoa/current/)|61|
 |[EnsemblPlants](http://ftp.ensemblgenomes.org/pub/plants/current/)|61|
 |[EnsemblFungi](http://ftp.ensemblgenomes.org/pub/fungi/current/)|61|
