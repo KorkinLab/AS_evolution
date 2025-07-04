@@ -6,7 +6,7 @@ This repository contains the code for our paper:
 
 ## Code
 1. `step1_get_data.py`
-  - on Ensembl FTP servers, iterates through different biological kingdoms and downloads the primary gene annotation file and corresponding protein sequence file
+  - iterates through different biological kingdoms and downloads the primary gene annotation file and corresponding protein sequence file
   - calculates descriptive statistics for gene length, exon count, and protein length for each species
 2. `step2_merge_all_data.py`
   - aggregates result files
@@ -19,7 +19,7 @@ This repository contains the code for our paper:
 
 ## Data
 ### Protein coding genes
-The protein coding genes were obtained from Ensembl and EnsemblGenomes following the official group categorization. Archaea and Bacteria were not included in this analysis for not exhibiting alternative splicing the way eukaryotes do.
+Protein coding gene annotations in `GFF3` format are obtained from Ensembl and EnsemblGenomes FTP server following the official group categorization. Archaea and Bacteria are not included in this study for not exhibiting alternative splicing the way eukaryotes do in general. 
 |Divisions|Release|
 |--------|-------|
 |[EnsemblVertebrates]([https://ftp.ensembl.org/pub](https://ftp.ensembl.org/pub/current/))|114|
@@ -27,5 +27,14 @@ The protein coding genes were obtained from Ensembl and EnsemblGenomes following
 |[EnsemblPlants](http://ftp.ensemblgenomes.org/pub/plants/current/)|61|
 |[EnsemblFungi](http://ftp.ensemblgenomes.org/pub/fungi/current/)|61|
 |[EnsemblProtists](http://ftp.ensemblgenomes.org/pub/protists/current/)|61|
+
+### Protein sequences
+Protein sequences in `FASTA` format are obtained from Ensembl and EnsemblGenomes FTP server
+  - EnsemblVertebrates: `/pub/current/fasta/${species}/pep`
+  - Other Divisions: `/pub/current/${kingdom}/fasta/${species}/pep`
+
+## Results
+After data acquisation and aggregation, `panel_a_data.tsv` is generated which serves as the primary dataset for statistical analysis and visualization.
+
 
 
