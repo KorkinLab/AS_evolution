@@ -13,13 +13,13 @@ os.chdir("temp_folder")
 
 ftp = FTP('ftp.ensemblgenomes.org')
 ftp.login() 
-ftp.cwd('/pub/current')
+ftp.cwd('/pub/release-61')
 
 for kingdom in ['fungi', 'metazoa','plants', 'protists','plants']:
     print(f"Processing {kingdom}")
     os.makedirs(kingdom, exist_ok=True)
 
-    ftp.cwd(f'/pub/current/{kingdom}/gff3')
+    ftp.cwd(f'/pub/release-61/{kingdom}/gff3')
     species_list = ftp.nlst()
     species_list = [s for s in species_list if 'collection' not in s]  # Filter out collection directories
     species_count = len(species_list)
@@ -33,7 +33,7 @@ for kingdom in ['fungi', 'metazoa','plants', 'protists','plants']:
                 os.remove(f)
 
         # Download the GFF3 file
-        ftp.cwd(f'/pub/current/{kingdom}/gff3/{species}')
+        ftp.cwd(f'/pub/release-61/{kingdom}/gff3/{species}')
         gff_files = ftp.nlst()
         gff_files = sorted(gff_files, key=lambda f: ftp.size(f) if f.endswith('gff3.gz') else 0, reverse=True)
         gff_files = [f for f in gff_files if 'abinitio' not in f]
@@ -51,7 +51,7 @@ for kingdom in ['fungi', 'metazoa','plants', 'protists','plants']:
 
 
         # Download the corresponding FASTA file
-        ftp.cwd(f'/pub/current/{kingdom}/fasta/{species}/pep')
+        ftp.cwd(f'/pub/release-61/{kingdom}/fasta/{species}/pep')
         fa_files = ftp.nlst()
         fa_files = sorted(fa_files, key=lambda f: ftp.size(f) if f.endswith('fa.gz') else 0, reverse=True)
         fa_files = [f for f in fa_files if 'abinitio' not in f]
@@ -106,13 +106,13 @@ ftp.close()
 
 ftp = FTP('ftp.ensembl.org')
 ftp.login() 
-ftp.cwd('/pub/current')
+ftp.cwd('/pub/release-114')
 
 for kingdom in ['vertebrate']:
     print(f"Processing {kingdom}")
     os.makedirs(kingdom, exist_ok=True)
     
-    ftp.cwd(f'/pub/current/gff3')
+    ftp.cwd(f'/pub/release-114/gff3')
     species_list = ftp.nlst()
     species_count = len(species_list)
     species_finished = 0
@@ -125,7 +125,7 @@ for kingdom in ['vertebrate']:
                 os.remove(f)
 
         # Download the GFF3 file
-        ftp.cwd(f'/pub/current/gff3/{species}')
+        ftp.cwd(f'/pub/release-114/gff3/{species}')
         gff_files = ftp.nlst()
         gff_files = sorted(gff_files, key=lambda f: ftp.size(f) if f.endswith('gff3.gz') else 0, reverse=True)
         gff_files = [f for f in gff_files if 'abinitio' not in f]
@@ -142,7 +142,7 @@ for kingdom in ['vertebrate']:
             continue
 
         # Download the corresponding FASTA file
-        ftp.cwd(f'/pub/current/fasta/{species}/pep')
+        ftp.cwd(f'/pub/release-114/fasta/{species}/pep')
         fa_files = ftp.nlst()
         fa_files = sorted(fa_files, key=lambda f: ftp.size(f) if f.endswith('fa.gz') else 0, reverse=True)
         fa_files = [f for f in fa_files if 'abinitio' not in f]
